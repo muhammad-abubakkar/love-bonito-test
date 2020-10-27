@@ -7,21 +7,18 @@
 @tailwind utilities;
 
 @import './button.css';
+@import './card.css';
 
-.location-card {
-    @apply w-full flex flex-col px-5 py-3 border cursor-pointer
-}
-
-.section {
+.sidebar {
     @apply border-l border-r;
     height: calc(100vh - 150px);
     overflow-y: auto;
 }
-
-.location-card:hover {
-    @apply bg-blue-500 text-white
+.section {
+    @apply border;
+    height: calc(100vh - 101px);
+    overflow-y: auto;
 }
-
 body {
     font-family: 'Poppins', sans-serif;
 }
