@@ -1,5 +1,8 @@
-import HomePage from '@/pages/HomePage'
+import LocationPage from '@/pages/LocationPage'
+import CharacterPage from "@/pages/CharacterPage";
 
 export default [
-    {path: '/', component: HomePage}
+    {path: '/', redirect: '/locations'},
+    {path: '/locations', component: LocationPage},
+    {path: '/characters/:id', component: CharacterPage},
 ]
