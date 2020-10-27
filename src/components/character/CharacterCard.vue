@@ -1,5 +1,5 @@
 <template>
-  <div class="character-card">
+  <router-link :to="`/characters/${character.id}`" class="character-card">
     <div class="w-full" v-lazy-container="{selector: 'img'}">
       <img :data-src="character.image" data-loading="/placeholder.webp" :alt="character.name + '\'s Image'" class="w-full">
     </div>
@@ -10,7 +10,7 @@
         <div>{{ episodes }}</div>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
