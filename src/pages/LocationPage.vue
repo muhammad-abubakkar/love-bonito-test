@@ -4,25 +4,29 @@
       <LocationSearch v-model="search" />
       <div class="sidebar">
         <location-card
-            v-for="loc in results" :key="loc.id"
+            v-for="loc in location.list" :key="loc.id"
             :location="loc"
-            @select="onSelect(loc)"
-            :selected="location.id"
+            @select="setLocation(loc)"
+            :selected="selectedId"
         />
       </div>
-      <LocationPager v-if="info" :info="info" @onNext="changePage" @onPrev="changePage" />
+      <LocationPager
+          v-if="location.info"
+          :info="location.info"
+          @onNext="changePage"
+          @onPrev="changePage"
+      />
     </div>
     <div class="w-full sm:w-6/12 md:w-8/12 lg:w-9/12">
-      <select-message v-if="!location.id"/>
-      <location-characters v-else :location="location"/>
+      <select-message v-if="!location.selected"/>
+      <location-characters v-else :location="location.selected"/>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 import debounce from 'debounce'
-import Location from "@/models/location";
+import {mapActions, mapState} from 'vuex'
 import LocationCard from "@/components/location/LocationCard";
 import LocationPager from "@/components/location/LocationPager";
 import SelectMessage from "@/components/location/SelectMessage";
@@ -37,47 +41,43 @@ export default {
   data() {
     return {
       search: '',
-      location: {id: 0, residents: []},
-      info: null,
-      results: []
     }
   },
   watch: {
     search: debounce(function() {
       this.info.page = 1
-      this.getLocations(1, this.search)
+      this.getLocations({page: 1, search: this.search})
     }, 750)
   },
+  computed: {
+    ...mapState(['location', 'character']),
+    selectedId() {
+      let {selected} = this.location;
+      return selected ? selected.id : 0
+    },
+  },
   created() {
-    this.getLocations(1, "")
+    this.getLocations({page: 1, search: ""}).then(() => {
+      if (this.location.list.length) {
+        this.setLocation(this.location.list[0])
+      }
+    })
   },
   components: {
-    LocationCharacters,
-    SelectMessage,
     LocationCard,
+    SelectMessage,
     LocationPager,
     LocationSearch,
+    LocationCharacters,
   },
   methods: {
-    onSelect: function (location) {
-      this.location = location
-    },
+    ...mapActions({
+      setLocation: 'location/setLocation',
+      getLocations: 'location/getLocations'
+    }),
     changePage: function(page) {
-      this.getLocations(page, this.search)
+      this.getLocations({page, search: this.search})
     },
-    async getLocations(page, search) {
-      try {
-        let query = `page=${page}&name=${search}`
-        let response = await axios.get(`https://rickandmortyapi.com/api/location?${query}`)
-        this.info = response.data.info
-        this.results = response.data.results.map(location => new Location(location))
-        // if (this.results.length) {
-        //   this.location = this.results[0]
-        // }
-      } catch (e) {
-        console.log(e)
-      }
-    }
   }
 }
 </script>
