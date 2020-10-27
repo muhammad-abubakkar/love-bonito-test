@@ -10,6 +10,9 @@ export default {
     info: null
   }),
   mutations: {
+    setCurrentPage(state, page) {
+      state.info.page = page
+    },
     setLoading(state, loading) {
       state.loading = loading
     },
@@ -24,6 +27,9 @@ export default {
     }
   },
   actions: {
+    setCurrentPage({commit}, page) {
+      commit('setCurrentPage', page)
+    },
     setLocation({commit, dispatch}, location) {
       commit('selectLocation', location)
       dispatch('character/getCharacters', location, {root: true})

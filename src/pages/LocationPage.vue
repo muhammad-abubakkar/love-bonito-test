@@ -45,7 +45,7 @@ export default {
   },
   watch: {
     search: debounce(function() {
-      this.info.page = 1
+      this.setCurrentPage(1)
       this.getLocations({page: 1, search: this.search})
     }, 750)
   },
@@ -73,7 +73,8 @@ export default {
   methods: {
     ...mapActions({
       setLocation: 'location/setLocation',
-      getLocations: 'location/getLocations'
+      getLocations: 'location/getLocations',
+      setCurrentPage: 'location/setCurrentPage',
     }),
     changePage: function(page) {
       this.getLocations({page, search: this.search})

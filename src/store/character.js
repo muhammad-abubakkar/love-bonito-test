@@ -20,6 +20,7 @@ export default {
     async getCharacters({commit}, location) {
       let ids = getCharacterIds(location)
       if (!ids) {
+        commit('setCharacters', [])
         return
       }
       commit('setLoading', true)
