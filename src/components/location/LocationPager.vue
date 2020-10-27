@@ -1,13 +1,13 @@
 <template>
   <div class="flex border">
-    <button class="w-3/12 btn" @click.stop="$emit('onPrev', currentPage - 1)" :disabled="stopPrev">
+    <button class="w-3/12 btn font-bold text-sm" @click.stop="onPrev" :disabled="stopPrev">
       Prev
     </button>
     <div class="w-6/12 flex flex-col justify-between items-center text-xs font-medium py-1 border">
       <span>{{ info.count }} {{ info.count > 1 ? 'Locations' : 'Location' }}</span>
       <span>Page {{ currentPage }} / {{ info.pages }}</span>
     </div>
-    <button class="w-3/12 btn" @click.stop="$emit('onNext', currentPage + 1)" :disabled="stopNext">
+    <button class="w-3/12 btn font-bold text-sm" @click.stop="onNext" :disabled="stopNext">
       Next
     </button>
   </div>
@@ -32,6 +32,14 @@ export default {
     stopNext: function () {
       return this.currentPage > this.info.pages - 1
     },
+  },
+  methods: {
+    onPrev: function () {
+      this.$emit('onPrev', this.currentPage - 1)
+    },
+    onNext: function () {
+      this.$emit('onNext', this.currentPage + 1)
+    }
   }
 }
 </script>

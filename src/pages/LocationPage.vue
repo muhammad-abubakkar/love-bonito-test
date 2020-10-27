@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     changePage: function(page) {
-      this.getLocations(page, "")
+      this.getLocations(page, this.search)
     },
     async getLocations(page, search) {
       try {
@@ -66,7 +66,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
