@@ -1,0 +1,25 @@
+.section-title {
+    @apply w-full px-5 text-lg border-r;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+/* Location Card */
+.location-card {
+    @apply w-full flex flex-col px-5 py-3 border cursor-pointer
+}
+.location-card:hover {
+    @apply bg-gray-300
+}
+.location-card-selected {
+    @apply bg-gray-700 text-white
+}
+.location-card-selected:hover {
+    @apply bg-gray-700 text-white
+}
+/* Character Card */
+.character-card {
+    @apply flex flex-col px-5 py-3 border cursor-pointer
+}
+.character-card:hover {
+    @apply shadow-xl border-gray-600;
+}
