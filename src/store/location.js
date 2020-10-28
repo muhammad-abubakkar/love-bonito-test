@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Location from "@/models/location";
+import {dbStorage} from "@/helpers/offline";
 
 export default {
   namespaced: true,
@@ -38,9 +39,16 @@ export default {
       commit('setLoading', true)
       try {
         let query = `page=${page}&name=${search}`
-        let response = await axios.get(`https://rickandmortyapi.com/api/location?${query}`)
-        commit('setInfo', response.data.info)
-        commit('setLocations', response.data.results)
+        let cached = await dbStorage.getLocations(query)
+        if (cached) {
+          commit('setInfo', cached.info)
+          commit('setLocations', cached.results)
+        } else {
+          let response = await axios.get(`https://rickandmortyapi.com/api/location?${query}`)
+          await dbStorage.setLocations(query, response.data)
+          commit('setInfo', response.data.info)
+          commit('setLocations', response.data.results)
+        }
       } catch (e) {
         console.log(e)
       }
