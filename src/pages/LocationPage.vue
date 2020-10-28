@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
-    <div class="w-full sm:w-6/12 md:w-4/12 lg:w-3/12">
-      <LocationSearch v-model="search" />
+    <div class="w-full md:w-6/12 lg:w-3/12">
+      <location-search v-model="search" />
       <div class="sidebar">
         <location-card
             v-for="loc in location.list" :key="loc.id"
@@ -17,7 +17,7 @@
           @onPrev="changePage"
       />
     </div>
-    <div class="w-full sm:w-6/12 md:w-8/12 lg:w-9/12">
+    <div class="w-full md:w-6/12 lg:w-9/12">
       <select-message v-if="!location.selected"/>
       <location-characters v-else :location="location.selected"/>
     </div>
