@@ -23,7 +23,7 @@
         <td>{{new Date(character.created).toDateString()}}</td>
       </tr>
     </table>
-    <router-link to="/locations" class="text-blue-600 font-bold mt-5">Go Back</router-link>
+    <router-link to="/" class="text-blue-600 font-bold mt-5">Go Back</router-link>
   </div>
 </template>
 
