@@ -30,7 +30,7 @@
 <script>
 export default {
   name: "CharacterInfo",
-  props: ['character']
+  props: ['character'],
 }
 </script>
 
