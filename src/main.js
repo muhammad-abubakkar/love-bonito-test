@@ -7,6 +7,7 @@ import App from './App.vue'
 import store from './store'
 import routes from './routes'
 import '@/assets/css/style.css'
+import './registerServiceWorker'
 
 Vue.use(VueMeta)
 Vue.use(VueRouter)

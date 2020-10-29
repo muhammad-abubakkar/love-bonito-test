@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "debounce": "^1.2.0",
     "idb": "^5.0.7",
+    "register-service-worker": "^1.7.1",
     "tailwindcss": "^1.9.6",
     "vue": "^2.6.11",
     "vue-helmet": "^1.1.5",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-pwa": "^4.5.8",
     "@vue/cli-service": "~4.5.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
