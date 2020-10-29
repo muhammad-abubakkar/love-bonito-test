@@ -10,10 +10,10 @@ export default {
     list: [],
   }),
   mutations: {
-    setLoading(state, loading) {
+    SET_LOADING(state, loading) {
       state.loading = loading
     },
-    setEpisodes(state, episodes) {
+    SET_EPISODES(state, episodes) {
       state.list = episodes.map(episode => new Episode(episode))
     }
   },
@@ -21,22 +21,22 @@ export default {
     async getEpisodes({commit}, character) {
       let ids = getEpisodeIds(character)
       if (!ids) {
-        commit('setEpisodes', [])
+        commit('SET_EPISODES', [])
         return
       }
-      commit('setLoading', true)
+      commit('SET_LOADING', true)
       try {
         let cached = await dbStorage.getEpisodes(ids)
         if (cached) {
-          commit('setEpisodes', cached)
+          commit('SET_EPISODES', cached)
         } else {
           let response = await axios.get(`https://rickandmortyapi.com/api/episode/${ids}`)
           let data = response.data
           if (Array.isArray(data)) {
-            commit('setEpisodes', data)
+            commit('SET_EPISODES', data)
             await dbStorage.setEpisodes(ids, data)
           } else {
-            commit('setEpisodes', [data])
+            commit('SET_EPISODES', [data])
             await dbStorage.setEpisodes(ids, [data])
           }
         }
