@@ -8,9 +8,19 @@ import episode from './episode'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: () => ({}),
-  mutations: {},
-  actions: {},
+  state: () => ({
+    showSideBar: false
+  }),
+  mutations: {
+    SET_VISIBILITY(state) {
+      state.showSideBar = !state.showSideBar
+    }
+  },
+  actions: {
+    toggleSideBar({commit}) {
+      commit('SET_VISIBILITY')
+    }
+  },
   getters: {},
   modules: {
     location,
