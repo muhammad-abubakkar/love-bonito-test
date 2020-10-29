@@ -11,23 +11,23 @@ export default {
     list: [],
   }),
   mutations: {
-    setLoading(state, loading) {
+    SET_LOADING(state, loading) {
       state.loading = loading
     },
-    setCharacters(state, characters) {
+    SET_CHARACTERS(state, characters) {
       state.list = characters.map(character => new Character(character))
     },
-    selectCharacter(state, character) {
+    SELECT_CHARACTER(state, character) {
       state.selected = character
     }
   },
   actions: {
     setCharacter({commit, dispatch}, character) {
-      commit('selectCharacter', character)
+      commit('SELECT_CHARACTER', character)
       dispatch('episode/getEpisodes', character, {root: true})
     },
     async getCharacter({commit, dispatch}, id) {
-      commit('setLoading', true)
+      commit('SET_LOADING', true)
       try {
         let cached = await dbStorage.getCharacters(id)
         if (cached) {
@@ -41,34 +41,34 @@ export default {
       } catch (e) {
         console.log(e)
       }
-      commit('setLoading', false)
+      commit('SET_LOADING', false)
     },
     async getCharacters({commit}, location) {
       let ids = getCharacterIds(location)
       if (!ids) {
-        commit('setCharacters', [])
+        commit('SET_CHARACTERS', [])
         return
       }
-      commit('setLoading', true)
+      commit('SET_LOADING', true)
       try {
         let cached = await dbStorage.getCharacters(ids)
         if (cached) {
-          commit('setCharacters', cached)
+          commit('SET_CHARACTERS', cached)
         } else {
           let response = await axios.get(`https://rickandmortyapi.com/api/character/${ids}`)
           let data = response.data
           if (Array.isArray(data)) {
-            commit('setCharacters', data)
+            commit('SET_CHARACTERS', data)
             await dbStorage.setCharacters(ids, data)
           } else {
-            commit('setCharacters', [data])
+            commit('SET_CHARACTERS', [data])
             await dbStorage.setCharacters(ids, [data])
           }
         }
       } catch (e) {
         console.log(e)
       }
-      commit('setLoading', false)
+      commit('SET_LOADING', false)
     }
   },
 }

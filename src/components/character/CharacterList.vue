@@ -10,7 +10,7 @@
         No Character Found!
       </h1>
     </div>
-    <div class="flex w-full md:w-6/12 lg:w-4/12 xl:w-3/12" v-else v-for="character in characters" :key="character.id">
+    <div class="flex w-6/12 md:w-4/12 lg:w-6/12 xl:w-3/12" v-else v-for="character in characters" :key="character.id">
       <character-card :character="character"/>
     </div>
   </div>

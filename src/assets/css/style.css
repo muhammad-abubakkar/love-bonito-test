@@ -10,6 +10,19 @@
 @import './card.css';
 
 .sidebar {
+    @apply w-64 absolute shadow-lg bg-white;
+}
+
+.sidebar-hide {
+    left: -260px;
+    transition: left 300ms;
+}
+.sidebar-show {
+    left: 0;
+    transition: left 200ms;
+}
+
+.locations {
     @apply border-l border-r;
     height: calc(100vh - 150px);
     overflow-y: auto;
