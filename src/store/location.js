@@ -34,6 +34,7 @@ export default {
     setLocation({commit, dispatch}, location) {
       commit('SELECT_LOCATION', location)
       dispatch('character/getCharacters', location, {root: true})
+      dispatch('toggleSideBar', false, {root: true})
     },
     async getLocations({commit}, {page, search}) {
       commit('SET_LOADING', true)
