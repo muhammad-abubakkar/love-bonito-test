@@ -12,12 +12,12 @@ export default new Vuex.Store({
     showSideBar: false
   }),
   mutations: {
-    SET_VISIBILITY(state) {
+    SET_VISIBILITY (state) {
       state.showSideBar = !state.showSideBar
     }
   },
   actions: {
-    toggleSideBar({commit}) {
+    toggleSideBar ({ commit }) {
       commit('SET_VISIBILITY')
     }
   },
@@ -25,6 +25,6 @@ export default new Vuex.Store({
   modules: {
     location,
     character,
-    episode,
+    episode
   }
 })
