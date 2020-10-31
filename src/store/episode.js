@@ -43,7 +43,7 @@ export default {
       } catch (e) {
         console.log(e)
       }
-      commit('setLoading', false)
+      commit('SET_LOADING', false)
     }
   }
 }
