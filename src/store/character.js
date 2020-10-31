@@ -7,7 +7,7 @@ export default {
   namespaced: true,
   state: () => ({
     selected: null,
-    loading: true,
+    loading: false,
     list: []
   }),
   mutations: {
