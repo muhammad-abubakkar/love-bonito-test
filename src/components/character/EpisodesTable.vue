@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: "EpisodesTable",
-  props: ['episode'],
+  name: 'EpisodesTable',
+  props: ['episode']
 }
 </script>

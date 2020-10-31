@@ -1,40 +1,40 @@
-import axios from "axios";
-import Character from "@/models/character";
-import {dbStorage} from "@/helpers/offline";
-import {getCharacterIds} from "@/helpers/character";
+import axios from 'axios'
+import Character from '@/models/character'
+import { dbStorage } from '@/helpers/offline'
+import { getCharacterIds } from '@/helpers/character'
 
 export default {
   namespaced: true,
   state: () => ({
     selected: null,
     loading: true,
-    list: [],
+    list: []
   }),
   mutations: {
-    SET_LOADING(state, loading) {
+    SET_LOADING (state, loading) {
       state.loading = loading
     },
-    SET_CHARACTERS(state, characters) {
+    SET_CHARACTERS (state, characters) {
       state.list = characters.map(character => new Character(character))
     },
-    SELECT_CHARACTER(state, character) {
+    SELECT_CHARACTER (state, character) {
       state.selected = character
     }
   },
   actions: {
-    setCharacter({commit, dispatch}, character) {
+    setCharacter ({ commit, dispatch }, character) {
       commit('SELECT_CHARACTER', character)
-      dispatch('episode/getEpisodes', character, {root: true})
+      dispatch('episode/getEpisodes', character, { root: true })
     },
-    async getCharacter({commit, dispatch}, id) {
+    async getCharacter ({ commit, dispatch }, id) {
       commit('SET_LOADING', true)
       try {
-        let cached = await dbStorage.getCharacters(id)
+        const cached = await dbStorage.getCharacters(id)
         if (cached) {
           dispatch('setCharacter', cached[0])
         } else {
-          let response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`)
-          let data = response.data
+          const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`)
+          const data = response.data
           dispatch('setCharacter', data)
           await dbStorage.setCharacters(id, [data])
         }
@@ -43,20 +43,20 @@ export default {
       }
       commit('SET_LOADING', false)
     },
-    async getCharacters({commit}, location) {
-      let ids = getCharacterIds(location)
+    async getCharacters ({ commit }, location) {
+      const ids = getCharacterIds(location)
       if (!ids) {
         commit('SET_CHARACTERS', [])
         return
       }
       commit('SET_LOADING', true)
       try {
-        let cached = await dbStorage.getCharacters(ids)
+        const cached = await dbStorage.getCharacters(ids)
         if (cached) {
           commit('SET_CHARACTERS', cached)
         } else {
-          let response = await axios.get(`https://rickandmortyapi.com/api/character/${ids}`)
-          let data = response.data
+          const response = await axios.get(`https://rickandmortyapi.com/api/character/${ids}`)
+          const data = response.data
           if (Array.isArray(data)) {
             commit('SET_CHARACTERS', data)
             await dbStorage.setCharacters(ids, data)
@@ -70,5 +70,5 @@ export default {
       }
       commit('SET_LOADING', false)
     }
-  },
+  }
 }

@@ -22,23 +22,23 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex'
-import CharacterInfo from "@/components/character/CharacterInfo";
-import EpisodesTable from "@/components/character/EpisodesTable";
+import { mapActions, mapState } from 'vuex'
+import CharacterInfo from '@/components/character/CharacterInfo'
+import EpisodesTable from '@/components/character/EpisodesTable'
 
 export default {
   name: 'CharacterPage',
-  components: {EpisodesTable, CharacterInfo},
+  components: { EpisodesTable, CharacterInfo },
   metaInfo: {
     title: 'Character Page'
   },
   computed: {
     ...mapState({
       episode: state => state.episode,
-      character: state => state.character,
+      character: state => state.character
     })
   },
-  created() {
+  created () {
     this.getCharacter(this.$route.params.id)
   },
   methods: {

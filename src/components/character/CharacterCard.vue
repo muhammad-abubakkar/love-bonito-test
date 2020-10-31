@@ -14,19 +14,19 @@
 </template>
 
 <script>
-import Character from "@/models/character";
+import Character from '@/models/character'
 
 export default {
-  name: "CharacterCard",
+  name: 'CharacterCard',
   props: {
     character: Character
   },
   computed: {
-    episodes() {
-      let count = this.character.episode.length
+    episodes () {
+      const count = this.character.episode.length
       return count > 1 ? `${count} episodes` : `${count} episode`
     }
-  },
+  }
 }
 </script>
 

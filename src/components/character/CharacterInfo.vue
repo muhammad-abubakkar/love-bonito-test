@@ -29,8 +29,8 @@
 
 <script>
 export default {
-  name: "CharacterInfo",
-  props: ['character'],
+  name: 'CharacterInfo',
+  props: ['character']
 }
 </script>
 

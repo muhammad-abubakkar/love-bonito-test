@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
-import SideBar from "@/components/SideBar";
-import SelectMessage from "@/components/location/SelectMessage";
-import LocationCharacters from "@/components/location/LocationCharacters";
+import { mapState } from 'vuex'
+import SideBar from '@/components/SideBar'
+import SelectMessage from '@/components/location/SelectMessage'
+import LocationCharacters from '@/components/location/LocationCharacters'
 
 export default {
   name: 'HomePage',
@@ -20,12 +20,12 @@ export default {
     title: 'Home Page'
   },
   computed: {
-    ...mapState(['location']),
+    ...mapState(['location'])
   },
   components: {
     SideBar,
     SelectMessage,
-    LocationCharacters,
-  },
+    LocationCharacters
+  }
 }
 </script>

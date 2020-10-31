@@ -15,14 +15,14 @@
 
 <script>
 export default {
-  name: "LocationPager",
+  name: 'LocationPager',
   props: ['info'],
   computed: {
-    currentPage: function() {
+    currentPage: function () {
       if (!this.info.prev) {
         return 1
       } else {
-        let query = new URLSearchParams(this.info.prev.split('?')[1])
+        const query = new URLSearchParams(this.info.prev.split('?')[1])
         return Number(query.get('page')) + 1
       }
     },
@@ -31,7 +31,7 @@ export default {
     },
     stopNext: function () {
       return this.currentPage > this.info.pages - 1
-    },
+    }
   },
   methods: {
     onPrev: function () {

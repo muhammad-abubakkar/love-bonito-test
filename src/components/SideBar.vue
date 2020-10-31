@@ -19,41 +19,41 @@
 </template>
 
 <script>
-import LocationCard from "@/components/location/LocationCard";
-import LocationPager from "@/components/location/LocationPager";
-import LocationSearch from "@/components/location/LocationSearch";
-import debounce from "debounce";
-import {mapActions, mapState} from "vuex";
+import LocationCard from '@/components/location/LocationCard'
+import LocationPager from '@/components/location/LocationPager'
+import LocationSearch from '@/components/location/LocationSearch'
+import debounce from 'debounce'
+import { mapActions, mapState } from 'vuex'
 
 export default {
-  name: "SideBar",
-  components: {LocationPager, LocationCard, LocationSearch},
-  data() {
+  name: 'SideBar',
+  components: { LocationPager, LocationCard, LocationSearch },
+  data () {
     return {
-      search: '',
+      search: ''
     }
   },
   watch: {
-    search: debounce(function() {
+    search: debounce(function () {
       this.setCurrentPage(1)
-      this.getLocations({page: 1, search: this.search})
+      this.getLocations({ page: 1, search: this.search })
     }, 750)
   },
   computed: {
     ...mapState(['location', 'character', 'showSideBar']),
-    toggleSidebar() {
+    toggleSidebar () {
       return {
         'sidebar-show': this.showSideBar,
-        'sidebar-hide': !this.showSideBar,
+        'sidebar-hide': !this.showSideBar
       }
     },
-    selectedId() {
-      let {selected} = this.location;
+    selectedId () {
+      const { selected } = this.location
       return selected ? selected.id : 0
-    },
+    }
   },
-  created() {
-    this.getLocations({page: 1, search: ""}).then(() => {
+  created () {
+    this.getLocations({ page: 1, search: '' }).then(() => {
       if (this.location.list.length) {
         this.setLocation(this.location.list[0])
       }
@@ -63,11 +63,11 @@ export default {
     ...mapActions({
       setLocation: 'location/setLocation',
       getLocations: 'location/getLocations',
-      setCurrentPage: 'location/setCurrentPage',
+      setCurrentPage: 'location/setCurrentPage'
     }),
-    changePage: function(page) {
-      this.getLocations({page, search: this.search})
-    },
+    changePage: function (page) {
+      this.getLocations({ page, search: this.search })
+    }
   }
 }
 </script>

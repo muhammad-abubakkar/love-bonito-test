@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import CharacterCard from "@/components/character/CharacterCard";
+import CharacterCard from '@/components/character/CharacterCard'
 
 export default {
-  name: "CharacterList",
-  components: {CharacterCard},
-  props: ['characters', 'loading'],
+  name: 'CharacterList',
+  components: { CharacterCard },
+  props: ['characters', 'loading']
 }
 </script>

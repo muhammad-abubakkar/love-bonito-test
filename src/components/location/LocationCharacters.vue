@@ -12,16 +12,16 @@
 
 <script>
 import { mapState } from 'vuex'
-import CharacterList from "@/components/character/CharacterList";
+import CharacterList from '@/components/character/CharacterList'
 
 export default {
-  name: "LocationCharacters",
-  components: {CharacterList},
+  name: 'LocationCharacters',
+  components: { CharacterList },
   computed: {
     ...mapState({
       location: state => state.location.selected,
-      character: state => state.character,
+      character: state => state.character
     })
-  },
+  }
 }
 </script>

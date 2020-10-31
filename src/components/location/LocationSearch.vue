@@ -13,8 +13,8 @@
 
 <script>
 export default {
-  name: "LocationSearch",
-  props: ['value'],
+  name: 'LocationSearch',
+  props: ['value']
 }
 </script>
 

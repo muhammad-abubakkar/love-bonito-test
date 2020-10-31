@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import LocationData from "@/models/location";
+import LocationData from '@/models/location'
 
 export default {
-  name: "LocationCard",
+  name: 'LocationCard',
   props: {
     selected: Number,
     location: {
@@ -21,18 +21,18 @@ export default {
     }
   },
   computed: {
-    onSelected() {
+    onSelected () {
       return this.selected === this.location.id ? 'location-card-selected' : ''
     },
-    residents() {
-      let count = this.location.residents.length
+    residents () {
+      const count = this.location.residents.length
       return count > 1 ? `${count} residents` : `${count} resident`
     }
   },
   methods: {
-    onSelect() {
+    onSelect () {
       this.$emit('select', this.location)
-    },
+    }
 
   }
 }
