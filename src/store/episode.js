@@ -6,7 +6,7 @@ import { dbStorage } from '@/helpers/offline'
 export default {
   namespaced: true,
   state: () => ({
-    loading: true,
+    loading: false,
     list: []
   }),
   mutations: {
@@ -43,7 +43,7 @@ export default {
       } catch (e) {
         console.log(e)
       }
-      commit('setLoading', false)
+      commit('SET_LOADING', false)
     }
   }
 }
