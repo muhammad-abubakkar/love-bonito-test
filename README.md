@@ -1,4 +1,13 @@
 # Love Bonito Technical Test
+In this project, I have integrated Rest APIs from [Rick & Morty](https://rickandmortyapi.com). 
+
+There are two main routes.
+- Home Page
+    - Fetches and display locations with pagination
+    - Show all characters from a selected location
+- Character Page
+    - Fetches and display information about a specific character
+    - Fetches and display episodes of that character 
 
 Project uses following libraries/packages 
 - [vue.js](https://vuejs.org)
