@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar md:shadow-none md:left-0 md:w-4/12 md:relative lg:w-3/12" :class="toggleSidebar">
+  <div class="sidebar md:shadow-none md:left-0 md:w-4/12 md:relative lg:w-3/12" :class="toggleSidebar" data-testid="sidebar">
     <location-search v-model="search"/>
     <div class="locations">
       <location-card

@@ -1,6 +1,6 @@
 import setup from '@/setup'
 import Episode from '@/models/episode'
-import { episode } from '@/helpers/eipsode'
+import { episode } from '@/helpers/episode'
 import { render } from '@testing-library/vue'
 import EpisodesTable from '@/components/character/EpisodesTable'
 

@@ -14,5 +14,5 @@ Vue.use(VueLazyload)
 
 export default {
   store: new Vuex.Store(store),
-  router: new VueRouter({routes, mode: 'history'})
+  router: new VueRouter({ routes, mode: 'history' })
 }

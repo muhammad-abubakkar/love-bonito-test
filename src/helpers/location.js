@@ -1,10 +1,3 @@
-export function getCharacterIds (location) {
-  return location.residents.map(resident => {
-    const segments = resident.split('/')
-    return segments.slice(-1)
-  }).join(',')
-}
-
 export const info = {
   count: 108,
   next: 'https://rickandmortyapi.com/api/location?page=2',
