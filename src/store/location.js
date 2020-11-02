@@ -5,7 +5,7 @@ import { dbStorage } from '@/helpers/offline'
 export default {
   namespaced: true,
   state: () => ({
-    loading: true,
+    loading: false,
     selected: null,
     list: [],
     info: null
