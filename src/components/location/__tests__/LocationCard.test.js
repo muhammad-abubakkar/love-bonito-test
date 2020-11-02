@@ -1,34 +1,30 @@
+import setup from '@/setup'
 import Location from '@/models/location'
-import { render, fireEvent } from '@testing-library/vue'
 import { location } from '@/helpers/location'
+import { render, fireEvent } from '@testing-library/vue'
 import LocationCard from '@/components/location/LocationCard'
+
+jest.mock('idb')
+
+const options = {
+  ...setup,
+  props: {
+    selected: location.id,
+    location: new Location(location)
+  }
+}
 
 describe('Test Location Card Component', () => {
   it('should display location name', () => {
-    const { getByText } = render(LocationCard, {
-      props: {
-        selected: location.id,
-        location: new Location(location)
-      }
-    })
+    const { getByText } = render(LocationCard, options)
     getByText(location.name)
   })
   it('should display location dimension', () => {
-    const { getByText } = render(LocationCard, {
-      props: {
-        selected: location.id,
-        location: new Location(location)
-      }
-    })
+    const { getByText } = render(LocationCard, options)
     getByText(location.dimension)
   })
   it('should display location type', () => {
-    const { getByText } = render(LocationCard, {
-      props: {
-        selected: location.id,
-        location: new Location(location)
-      }
-    })
+    const { getByText } = render(LocationCard, options)
     getByText(location.type)
   })
   it('should emit select event on click', async () => {
@@ -36,10 +32,7 @@ describe('Test Location Card Component', () => {
       onSelect: jest.fn()
     }
     const { findByTestId } = render(LocationCard, {
-      props: {
-        selected: location.id,
-        location: new Location(location)
-      },
+      ...options,
       methods: methods
     })
     const card = await findByTestId('location-card')
