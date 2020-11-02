@@ -1,11 +1,15 @@
+import setup from '@/setup'
 import Episode from '@/models/episode'
 import { episode } from '@/helpers/eipsode'
 import { render } from '@testing-library/vue'
 import EpisodesTable from '@/components/character/EpisodesTable'
 
+jest.mock('idb')
+
 describe('Test Character Episode Table', () => {
   it('should display loading text', () => {
     const { getByText } = render(EpisodesTable, {
+      ...setup,
       props: {
         episode: {
           loading: true,
@@ -17,6 +21,7 @@ describe('Test Character Episode Table', () => {
   })
   it('should display no result text', () => {
     const { getByText } = render(EpisodesTable, {
+      ...setup,
       props: {
         episode: {
           loading: false,
@@ -28,6 +33,7 @@ describe('Test Character Episode Table', () => {
   })
   it('should display no result text', () => {
     const { getByText } = render(EpisodesTable, {
+      ...setup,
       props: {
         episode: {
           loading: false,

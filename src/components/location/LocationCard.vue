@@ -1,5 +1,5 @@
 <template>
-  <div class="location-card" :class="onSelected" @click="onSelect">
+  <div class="location-card" :class="onSelected" @click="onSelect" data-testid="location-card">
     <h4 class="font-bold">{{ location.name }}</h4>
     <div class="text-xs">{{ location.dimension }}</div>
     <div class="flex justify-between text-sm font-medium">
@@ -33,7 +33,6 @@ export default {
     onSelect () {
       this.$emit('select', this.location)
     }
-
   }
 }
 </script>

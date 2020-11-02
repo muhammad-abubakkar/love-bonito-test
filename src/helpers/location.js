@@ -5,6 +5,13 @@ export function getCharacterIds (location) {
   }).join(',')
 }
 
+export const info = {
+  count: 108,
+  next: 'https://rickandmortyapi.com/api/location?page=2',
+  pages: 6,
+  prev: null
+}
+
 export const location = {
   id: 71,
   type: 'Planet',
