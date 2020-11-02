@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Episode from '@/models/episode'
-import { getEpisodeIds } from '@/helpers/eipsode'
+import { getEpisodeIds } from '@/helpers/episode'
 import { dbStorage } from '@/helpers/offline'
 
 export default {

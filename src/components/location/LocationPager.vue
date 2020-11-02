@@ -1,13 +1,13 @@
 <template>
   <div class="flex border">
-    <button class="w-3/12 btn font-bold text-sm" @click.stop="onPrev" :disabled="stopPrev">
+    <button class="w-3/12 btn font-bold text-sm" @click.stop="onPrev" :disabled="stopPrev" data-testid="prev-btn">
       Prev
     </button>
     <div class="w-6/12 flex flex-col justify-between items-center text-xs font-medium py-1 border">
       <span>{{ info.count }} {{ info.count > 1 ? 'Locations' : 'Location' }}</span>
       <span>Page {{ currentPage }} / {{ info.pages }}</span>
     </div>
-    <button class="w-3/12 btn font-bold text-sm" @click.stop="onNext" :disabled="stopNext">
+    <button class="w-3/12 btn font-bold text-sm" @click.stop="onNext" :disabled="stopNext" data-testid="next-btn">
       Next
     </button>
   </div>

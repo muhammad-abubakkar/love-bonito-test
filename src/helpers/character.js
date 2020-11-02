@@ -14,7 +14,10 @@ export const character = {
   name: 'Alexander',
   created: '2017-11-04T20:32:33.144Z',
   url: 'https://rickandmortyapi.com/api/character/12',
-  episode: ['https://rickandmortyapi.com/api/episode/3'],
+  episode: [
+    'https://rickandmortyapi.com/api/episode/3',
+    'https://rickandmortyapi.com/api/episode/4'
+  ],
   image: 'https://rickandmortyapi.com/api/character/avatar/12.jpeg',
   origin: { name: 'Earth (C-137)', url: 'https://rickandmortyapi.com/api/location/1' },
   location: { name: 'Anatomy Park', url: 'https://rickandmortyapi.com/api/location/5' }
