@@ -21,6 +21,11 @@ export default {
       state.selected = character
     }
   },
+  getters: {
+    getSameLocationCharacters (state) {
+      return state.list.filter(character => character.id !== state.selected.id)
+    }
+  },
   actions: {
     setCharacter ({ commit, dispatch }, character) {
       commit('SELECT_CHARACTER', character)

@@ -31,7 +31,7 @@ describe('Test Character Episode Table', () => {
     })
     getByText('No Episode Found')
   })
-  it('should display no result text', () => {
+  it('should not display no result text', () => {
     const { getByText } = render(EpisodesTable, {
       ...setup,
       props: {

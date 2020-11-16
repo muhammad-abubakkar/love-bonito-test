@@ -13,6 +13,9 @@
         <div class="hidden xl:block">
           <episodes-table :episode="episode"/>
         </div>
+        <div class="hidden xl:block">
+          <characters-table :character="character" :heading="`Other Characters from ${character.selected.location.name}`"/>
+        </div>
       </div>
     </div>
   </div>
@@ -25,10 +28,11 @@
 import { mapActions, mapState } from 'vuex'
 import CharacterInfo from '@/components/character/CharacterInfo'
 import EpisodesTable from '@/components/character/EpisodesTable'
+import CharactersTable from '@/components/character/CharactersTable'
 
 export default {
   name: 'CharacterPage',
-  components: { EpisodesTable, CharacterInfo },
+  components: { EpisodesTable, CharacterInfo, CharactersTable },
   metaInfo: {
     title: 'Character Page'
   },

@@ -36,6 +36,14 @@ export default {
       dispatch('character/getCharacters', location, { root: true })
       dispatch('toggleSideBar', false, { root: true })
     },
+    async getLocation ({ dispatch }, locationId) {
+      try {
+        const response = await axios.get(`https://rickandmortyapi.com/api/location/${locationId}`)
+        dispatch('setLocation', response.data)
+      } catch (e) {
+        console.log(e)
+      }
+    },
     async getLocations ({ commit }, { page, search }) {
       commit('SET_LOADING', true)
       try {
